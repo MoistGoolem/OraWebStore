@@ -18,7 +18,7 @@ const data = {
             image: './images/products/p2.jpg',
             price: 100,
             species: 'Test Species',
-            rating: 4.7,
+            rating: 2.0,
             numReviews: 12,
             description: "This is another test product"
         },
