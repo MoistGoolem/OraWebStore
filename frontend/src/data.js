@@ -30,7 +30,7 @@ const data = {
             category: 'Test Category',
             image: '/images/products/p3.jpg',
             price: 200,
-            countInStock: 1,
+            countInStock: 0,
             species: 'Test Species',
             rating: 4.0,
             numReviews: 23,
