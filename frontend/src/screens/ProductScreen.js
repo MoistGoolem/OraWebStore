@@ -10,6 +10,7 @@ export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
     const [qty, setQty] = useState(1);
+    // @ts-ignore
     const productDetails = useSelector( (state) => state.productDetails);
     const { loading, error, product } = productDetails;
 
@@ -83,6 +84,7 @@ export default function ProductScreen(props) {
                                                 <div>
                                                     <select 
                                                         value={qty} 
+                                                        // @ts-ignore
                                                         onChange={(e) => setQty(e.target.value)}
                                                     >
                                                         {[...Array(product.countInStock).keys()].map(
