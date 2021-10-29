@@ -10,15 +10,15 @@ export default function ProductScreen(props) {
     const dispatch = useDispatch();
     const productId = props.match.params.id;
     const [qty, setQty] = useState(1);
-    const productDetails = useSelector( state => state.productDetails);
-    const { loading, error , product } = productDetails;
+    const productDetails = useSelector( (state) => state.productDetails);
+    const { loading, error, product } = productDetails;
 
     useEffect(() => {
         dispatch(detailsProduct(productId));
     }, [dispatch, productId]);
 
     const addToCartHandler = () => {
-        props.history.push(`/cart/${productId}?qty={qty}`);
+        props.history.push(`/cart/${productId}?qty=${qty}`);
     };
 
     return (
@@ -83,7 +83,7 @@ export default function ProductScreen(props) {
                                                 <div>
                                                     <select 
                                                         value={qty} 
-                                                        onChange={e => setQty(e.target.value)}
+                                                        onChange={(e) => setQty(e.target.value)}
                                                     >
                                                         {[...Array(product.countInStock).keys()].map(
                                                             (x) => (
