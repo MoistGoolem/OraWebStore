@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../actions/userActions';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 export default function LoginScreen() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
+    const dispatch = useDispatch();
     const submitHandler = (e) => {
         e.preventDefault();
-        // TODO: Create login action
+        dispatch(login(email, password));
     }
 
     return (
@@ -23,16 +28,16 @@ export default function LoginScreen() {
                         type="email" 
                         id="email" 
                         placeholder="Enter email"
-                        onChange={ e => setEmail(e.target.value) }
+                        onChange={ (e) => setEmail(e.target.value) }
                     ></input>
                 </div>
                 <div>
-                    <label htmlFor="password"> Email address</label>
+                    <label htmlFor="password"> Password</label>
                     <input 
                         type="password" 
                         id="password" 
                         placeholder="Enter password"
-                        onChange={ e => setPassword(e.target.value) }
+                        onChange={ (e) => setPassword(e.target.value) }
                     ></input>
                 </div>
                 <div>

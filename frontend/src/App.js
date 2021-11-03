@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
-import LoginScreen from './screens/loginScreen';
+import LoginScreen from './screens/LoginScreen';
 import ProductScreen from './screens/ProductScreen';
 
 function App() {
@@ -11,6 +11,8 @@ function App() {
     // @ts-ignore
     const cart = useSelector( state => state.cart);
     const { cartItems } = cart;
+    const userLogin = useSelector((state) => state.userLogin);
+    const { userInfo } = userLogin;
 
     return (
         <BrowserRouter>
@@ -27,15 +29,21 @@ function App() {
                                 <span className="badge">{cartItems.length}</span>
                             )}
                         </Link>
-                        <Link to="/login">Sign In</Link>
+                        {
+                            userInfo ? (
+                                <Link to="#">{userInfo.name}</Link>
+                            ) : (
+                                <Link to="/login">Sign In</Link>
+                            )
+                        }
                     </div>
                 </header>
 
                 <main>
-                    <Route path="/" component={HomeScreen} exact></Route>
                     <Route path="/product/:id" component={ProductScreen}></Route>
                     <Route path="/cart/:id?" component={CartScreen}></Route>
                     <Route path="/login" component={LoginScreen}></Route>
+                    <Route path="/" component={HomeScreen} exact></Route>
                 </main>
 
                 <footer className="row center">
