@@ -13,6 +13,7 @@ productRouter.get(
     })
 );
 
+//*Endpoint for seeding test data to db
 productRouter.get(
     '/seed', 
     expressAsyncHandler(async(req, res) => {

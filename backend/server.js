@@ -1,10 +1,16 @@
 import express from "express";
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import userRouter from "./src/routers/userRouter.js";
 import { environment } from "./src/environments/environment.js";
 import productRouter from "./src/routers/productRouter.js";
 
+dotenv.config();
+
+//*Express setup
 const app = express()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //*Mongo environment variables
 const mongo = environment.mongo;
