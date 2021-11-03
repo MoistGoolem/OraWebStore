@@ -34,6 +34,7 @@ app.use((err, req, res, next) => {
     res.status(500).send({ message: err.message });
 });
 
+// eslint-disable-next-line no-undef
 const SERVER_PORT = process.env.SERVER_PORT || 3001;
 
 app.listen(SERVER_PORT, () => {

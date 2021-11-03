@@ -8,6 +8,7 @@ export const generateToken = (user) => {
             email: user.email,
             isAdmin: user.isAdmin,
         }, 
+        // eslint-disable-next-line no-undef
         process.env.JWT_SECRET || 'SomethingSecret', 
         {
             expiresIn: '30d',
