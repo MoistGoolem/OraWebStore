@@ -1,10 +1,16 @@
 import express from "express";
 import mongoose from 'mongoose';
-import data from "./src/testData/data.js";
+import dotenv from 'dotenv';
 import userRouter from "./src/routers/userRouter.js";
 import { environment } from "./src/environments/environment.js";
+import productRouter from "./src/routers/productRouter.js";
 
+dotenv.config();
+
+//*Express setup
 const app = express()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //*Mongo environment variables
 const mongo = environment.mongo;
@@ -16,25 +22,19 @@ mongoose.connect(`${mongo.protocol}://${mongo.user}:${mongo.pass}@${mongo.host}/
     }
 );
 
-app.get('/api/products', (req, res) => {
-    res.send(data.products);
-});
-
-app.get('/api/products/:id', (req, res) => {
-    const product = data.products.find( x => x._id === req.params.id);
-    if(product){
-        res.send(product);
-    } else {
-        res.status(404).send({message: 'Product not found'});
-    }
-});
-
+//******ROUTERS*******/
 app.use('/api/users', userRouter);
+app.use('/api/products', productRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is ready');
 });
 
+app.use((err, req, res, next) => {
+    res.status(500).send({ message: err.message });
+});
+
+// eslint-disable-next-line no-undef
 const SERVER_PORT = process.env.SERVER_PORT || 3001;
 
 app.listen(SERVER_PORT, () => {
