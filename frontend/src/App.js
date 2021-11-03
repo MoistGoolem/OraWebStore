@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
@@ -9,7 +10,6 @@ import ProductScreen from './screens/ProductScreen';
 
 function App() {
 
-    // @ts-ignore
     const cart = useSelector( state => state.cart);
     const { cartItems } = cart;
     const userLogin = useSelector((state) => state.userLogin);
