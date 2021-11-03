@@ -15,7 +15,7 @@ export default function LoginScreen(props) {
         : '/';
 
     const userLogin = useSelector((state) => state.userLogin);
-    const { userInfo } = userLogin;
+    const { userInfo, loading, error } = userLogin;
     
     const dispatch = useDispatch();
     const submitHandler = (e) => {
@@ -35,6 +35,8 @@ export default function LoginScreen(props) {
                 <div>
                     <h1>Sign In</h1>
                 </div>
+                {loading && <LoadingBox></LoadingBox>}
+                {error && <MessageBox variant="danger">{error}</MessageBox>}
                 <div>
                     <label htmlFor="email"> Email address</label>
                     <input 
