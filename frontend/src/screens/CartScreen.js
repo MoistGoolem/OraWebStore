@@ -87,7 +87,7 @@ export default function CartScreen(props) {
                     <ul>
                         <li>
                             <h2>
-                                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : 
+                                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):  <br/>
                                 {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}kr 
                             </h2>
                         </li>
