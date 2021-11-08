@@ -86,19 +86,19 @@ export default function PlaceOrderScreen(props) {
                             <li>
                                 <div className="row">
                                     <div>Items</div>
-                                    <div>{cart.itemsPrice},-</div>
+                                    <div>{cart.itemsPrice.toFixed(2)},-</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
                                     <div>Shipping</div>
-                                    <div>{cart.shippingPrice},-</div>
+                                    <div>{cart.shippingPrice.toFixed(2)},-</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
                                     <div>Tax</div>
-                                    <div>{cart.taxPrice},-</div>
+                                    <div>{cart.taxPrice.toFixed(2)},-</div>
                                 </div>
                             </li>
                             <li>
@@ -107,7 +107,7 @@ export default function PlaceOrderScreen(props) {
                                         <strong>Order Total</strong>
                                     </div>
                                     <div>
-                                        <strong>{cart.totalPrice}DKK</strong>
+                                        <strong>{cart.totalPrice.toFixed(2)}DKK</strong>
                                     </div>
                                 </div>
                             </li>
