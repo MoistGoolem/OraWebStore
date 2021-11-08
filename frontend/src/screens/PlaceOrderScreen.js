@@ -17,8 +17,7 @@ export default function PlaceOrderScreen(props) {
     );
 
     cart.shippingPrice = cart.itemsPrice > 400? toPrice(0) : toPrice(70);
-    cart.taxPrice = toPrice(0.25 * cart.itemsPrice);
-    cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+    cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
 
     const placeOrderHandler = () => {
         //TODO: dispatch place order action
@@ -68,7 +67,7 @@ export default function PlaceOrderScreen(props) {
                                                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                                                 </div>
                                                 
-                                                <div>{item.qty} x {item.price}Dkk = {item.qty * item.price}Dkk</div>
+                                                <div>{item.qty} x {item.price}DKK = {item.qty * item.price}DKK</div>
                                             </div>
                                         </li>
                                     ))}
@@ -86,19 +85,13 @@ export default function PlaceOrderScreen(props) {
                             <li>
                                 <div className="row">
                                     <div>Items</div>
-                                    <div>{cart.itemsPrice.toFixed(2)},-</div>
+                                    <div>{cart.itemsPrice.toFixed(2)}DKK</div>
                                 </div>
                             </li>
                             <li>
                                 <div className="row">
                                     <div>Shipping</div>
-                                    <div>{cart.shippingPrice.toFixed(2)},-</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="row">
-                                    <div>Tax</div>
-                                    <div>{cart.taxPrice.toFixed(2)},-</div>
+                                    <div>{cart.shippingPrice.toFixed(2)}DKK</div>
                                 </div>
                             </li>
                             <li>
