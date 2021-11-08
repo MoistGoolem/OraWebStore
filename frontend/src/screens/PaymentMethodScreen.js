@@ -5,13 +5,13 @@ import { savePaymentMethod } from '../actions/cartActions';
 
 export default function PaymentMethodScreen(props) {
 
-
+    // @ts-ignore
     const cart = useSelector(state => state.cart);
     const {shippingAddress} = cart;
     if(!shippingAddress.address) {
         props.history.push('/shipping');
     }
-    
+
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
     const dispatch = useDispatch();
     const submitHandler = (e) => {
