@@ -11,7 +11,7 @@ userRouter.get(
     '/seed', 
 
     expressAsyncHandler(async(req, res) => {
-        //await User.deleteMany({}); //!This line removes all users before createing the new ones
+        //await User.deleteMany({}); //!This line removes all users before creating the new ones
         const createdUsers = await User.insertMany(data.users); //*Inserts users from data.js file
         res.send({ createdUsers });
     })

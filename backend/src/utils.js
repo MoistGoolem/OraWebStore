@@ -26,7 +26,7 @@ export const isAuth = (req, res, next) => {
             process.env.JWT_SECRET || 'SomethingSecret', 
             (err, decode) => {
                 if(err) {
-                    res.status(401).send({message: 'Invalid token'})
+                    res.status(401).send({ message: 'Invalid token' })
                 } else {
                     req.user = decode;
                     next();
@@ -34,6 +34,6 @@ export const isAuth = (req, res, next) => {
             }
         );
     } else {
-        res.status(401).send({message: 'No token'});
+        res.status(401).send({ message: 'No token' });
     }
 };

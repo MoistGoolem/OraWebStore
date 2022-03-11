@@ -26,7 +26,7 @@ export default function OrderScreen(props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        //*Handles paypal sdk
+        //*Handles PAYPAL sdk
         const addPayPalScript = async () => {
             const { data } = await axios.get('/api/config/paypal');
             const script = document.createElement('script');
@@ -38,6 +38,7 @@ export default function OrderScreen(props) {
             };
             document.body.appendChild(script);
         };
+
         if(!order || successPay || (order && order._id !== orderId)) {
             dispatch({ type: ORDER_PAY_RESET });
             dispatch(detailsOrder(orderId));

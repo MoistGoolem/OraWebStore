@@ -9,7 +9,7 @@ export default function ShippingAddressScreen(props) {
     const userLogin = useSelector(state => state.userLogin);
     const { userInfo } = userLogin;
     const cart = useSelector(state => state.cart);
-    const {shippingAddress} = cart;
+    const { shippingAddress } = cart;
     if(!userInfo) {
         props.history.push('/login')
     };

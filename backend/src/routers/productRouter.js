@@ -17,7 +17,7 @@ productRouter.get(
 productRouter.get(
     '/seed', 
     expressAsyncHandler(async(req, res) => {
-        //await Product.deleteMany({});  //!This line removes all users before createing the new ones
+        //await Product.deleteMany({});  //!This line removes all users before creating the new ones
         const createdProducts = await Product.insertMany(data.products);
         res.send({ createdProducts });
     })
